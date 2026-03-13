@@ -1,0 +1,314 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.plan-semanal-container {
+  min-height: 100vh;
+  background-color: $background-light;
+}
+
+// Header
+.plan-header {
+  background: white;
+  padding: $spacing-xl $spacing-xxl;
+  border-bottom: 1px solid $color-border-dark;
+  margin-bottom: $spacing-lg;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    h1 {
+      font-family: $font-primary;
+      font-weight: $font-bold;
+      font-size: $font-xxl;
+      color: $text-dark;
+      margin: 0;
+    }
+
+    button {
+      min-width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.today-btn {
+        min-width: auto;
+        padding: 0 $spacing-lg;
+        font-family: $font-secondary;
+        font-weight: $font-medium;
+      }
+    }
+
+    span {
+      font-family: $font-secondary;
+      font-size: $font-base;
+      color: $text-dark;
+      font-weight: $font-medium;
+    }
+  }
+
+  .header-right {
+    button {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      height: 44px;
+      padding: 0 $spacing-xl;
+      font-family: $font-secondary;
+      font-weight: $font-semibold;
+      font-size: 14px;
+      background-color: #000000;
+      color: white;
+      border-radius: 4px;
+
+      mat-icon {
+        margin: 0;
+      }
+
+      &:hover {
+        background-color: #333333;
+      }
+    }
+  }
+}
+
+// Week View
+.week-view {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 $spacing-xxl;
+  min-height: 600px;
+
+  .loading-state,
+  .error-state {
+    @include flex-center;
+    flex-direction: column;
+    padding: $spacing-xxl;
+    color: $text-muted;
+
+    mat-icon {
+      font-size: 64px;
+      width: 64px;
+      height: 64px;
+      margin-bottom: $spacing-lg;
+    }
+
+    p {
+      margin-bottom: $spacing-lg;
+    }
+  }
+}
+
+// Calendar Grid with Time Slots
+.calendar-grid {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  margin-bottom: $spacing-xl;
+}
+
+// Calendar Header
+.calendar-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  border-bottom: 2px solid $color-border-dark;
+  
+  .header-cell {
+    padding: $spacing-md;
+    background-color: $background-light;
+    border-right: 1px solid $color-border-dark;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    &.time-header {
+      background-color: white;
+    }
+    
+    &.day-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      
+      &.today {
+        background-color: $primary-color;
+        
+        .day-name,
+        .day-number {
+          color: white;
+        }
+      }
+      
+      .day-name {
+        font-family: $font-secondary;
+        font-size: 11px;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: $text-muted;
+      }
+      
+      .day-number {
+        font-family: $font-primary;
+        font-weight: $font-weight-bold;
+        font-size: 16px;
+        color: $text-dark;
+      }
+    }
+  }
+}
+
+// Calendar Body
+.calendar-body {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  
+  .time-cell {
+    padding: $spacing-sm $spacing-md;
+    background-color: $background-light;
+    border-right: 1px solid $color-border-dark;
+    border-bottom: 1px solid $color-border-dark;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    
+    .time-label {
+      font-family: $font-secondary;
+      font-size: 12px;
+      font-weight: $font-weight-medium;
+      color: $text-muted;
+      padding-top: 2px;
+    }
+  }
+  
+  .day-cell {
+    padding: $spacing-xs;
+    border-right: 1px solid $color-border-light;
+    border-bottom: 1px solid $color-border-light;
+    min-height: 60px;
+    background-color: white;
+    position: relative;
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.02);
+    }
+    
+    &.today-cell {
+      background-color: rgba($primary-color, 0.05);
+    }
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+// Event Card (simplified for grid view)
+.event-card {
+  background: white;
+  border-left: 3px solid $primary-color;
+  border-radius: 1px;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin-bottom: $spacing-xs;
+  
+  &:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+  }
+  
+  .event-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+    
+    .event-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+      color: $primary-color;
+      flex-shrink: 0;
+    }
+    
+    .event-title {
+      font-family: $font-primary;
+      font-weight: $font-weight-semibold;
+      font-size: 12px;
+      color: $text-dark;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+  }
+  
+  .event-duration {
+    font-family: $font-secondary;
+    font-size: 10px;
+    color: $text-muted;
+    display: block;
+  }
+}
+
+// Stats Footer
+.stats-footer {
+  max-width: 1600px;
+  margin: $spacing-xl auto;
+  padding: 0 $spacing-xxl $spacing-xl;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+
+  .stat-card {
+    background: white;
+    border: 1px solid #D1D5DB;
+    border-radius: $border-radius-lg;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .stat-label {
+      font-family: $font-secondary;
+      font-size: 10px;
+      font-weight: $font-semibold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94A3B8;
+    }
+
+    .stat-value {
+      font-family: $font-secondary;
+      font-size: 30px;
+      font-weight: 300;
+      color: #1E293B;
+      line-height: 1.2;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// 

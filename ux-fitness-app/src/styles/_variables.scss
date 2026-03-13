@@ -1,0 +1,171 @@
+// ============================================
+// Design System Variables - UX Fitness App
+// Extracted from Figma Design
+// ============================================
+
+// ==================== Colors ====================
+
+// Primary Colors
+$color-primary: #00C2FF;        // Cyan - Primary action color
+$color-accent: #FFB800;         // Yellow/Orange - Accent highlights
+$color-black: #000000;
+$color-white: #FFFFFF;
+
+// Text Colors
+$color-text-dark: #333333;      // Dark text
+$color-text-medium: #374151;    // Medium gray text
+$color-text-gray: #777777;      // Gray text (sidebar items)
+$color-text-light: #6B7280;     // Light gray text (placeholders)
+$color-text-muted: #9CA3AF;     // Muted text (labels)
+$color-text-disabled: #94A3B8;  // Disabled text
+
+// Background Colors
+$color-bg-primary: #FFFFFF;     // Main background
+$color-bg-secondary: #F0F0F0;   // Secondary background
+$color-bg-tertiary: #F3F4F6;    // Sidebar active item
+$color-bg-quaternary: #E5E7EB;  // Gray backgrounds
+$color-bg-selection: #94A3B8;   // Selection background (resolve conflicts)
+$color-bg-dark: #1F2937;        // Dark background (sidebar, dark sections)
+$color-bg-light: #F9FAFB;       // Very light background
+
+// Border Colors
+$color-border-light: #E5E7EB;   // Light borders
+$color-border-medium: #D1D5DB;  // Medium borders
+$color-border-dark: #D1D1D1;    // Dark borders
+
+// Semantic Colors
+$color-success: #10B981;        // Success/running color (green)
+$color-warning: #F59E0B;        // Warning color (orange)
+$color-error: #EF4444;          // Error color (red)
+$color-primary-light: rgba(0, 194, 255, 0.15);   // Primary background light
+$color-primary-border: rgba(0, 194, 255, 0.3);   // Primary border light
+$color-warning-bg: #FEF3C7;     // Warning background (beige)
+
+// ==================== Typography ====================
+
+// Font Families
+$font-primary: 'Lexend', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+// Font Weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font Sizes
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+$font-size-2xl: 32px;
+
+// Line Heights
+$line-height-xs: 15px;
+$line-height-sm: 16px;
+$line-height-base: 20px;
+$line-height-md: 24px;
+$line-height-lg: 28px;
+$line-height-xl: 32px;
+
+// ==================== Spacing ====================
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-2xl: 32px;
+$spacing-3xl: 40px;
+$spacing-4xl: 64px;
+
+// ==================== Layout ====================
+
+// Sidebar
+$sidebar-width: 278px;
+$sidebar-header-height: 81px;
+$sidebar-footer-height: 73px;
+
+// Header
+$header-height: 81px;
+
+// ==================== Border Radius ====================
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-full: 9999px;
+
+// ==================== Shadows ====================
+
+$shadow-sm: 0px 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+// ==================== Transitions ====================
+
+$transition-fast: 150ms ease-in-out;
+$transition-base: 250ms ease-in-out;
+$transition-slow: 350ms ease-in-out;
+
+// ==================== Breakpoints ====================
+
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ==================== Z-index ====================
+
+$z-index-base: 1;
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ==================== Alias Variables (for component compatibility) ====================
+
+// Color aliases
+$primary-color: $color-primary;
+$accent-color: $color-accent;
+$error-color: $color-error;
+$success-color: $color-success;
+$warning-color: $color-warning;
+
+// Text aliases
+$text-dark: $color-text-dark;
+$text-light: $color-text-light;
+$text-muted: $color-text-muted;
+$text-medium: $color-text-medium;
+
+// Background aliases
+$background-dark: $color-bg-dark;
+$background-light: $color-bg-light;
+
+// Font aliases
+$font-bold: $font-weight-bold;
+$font-semibold: $font-weight-semibold;
+$font-medium: $font-weight-medium;
+
+// Font size aliases
+$font-xs: $font-size-xs;
+$font-sm: $font-size-sm;
+$font-base: $font-size-base;
+$font-md: $font-size-md;
+$font-lg: $font-size-lg;
+$font-xl: $font-size-xl;
+$font-xxl: $font-size-2xl;
+
+// Spacing aliases
+$spacing-xxl: $spacing-2xl;
+$spacing-xxxl: $spacing-3xl;
+$spacing-xxxxl: $spacing-4xl;
+

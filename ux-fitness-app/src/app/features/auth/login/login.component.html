@@ -1,0 +1,99 @@
+<div class="login-page">
+  <!-- Left Side - Form -->
+  <div class="form-container">
+    <div class="form-content">
+      <!-- Logo -->
+      <div class="logo-box">
+        <span class="logo-text">[Logo]</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="form-title">Iniciar sesión</h1>
+
+      <!-- Error Alert -->
+      @if (errorMessage()) {
+        <div class="error-alert">
+          <mat-icon>error_outline</mat-icon>
+          <span>{{ errorMessage() }}</span>
+        </div>
+      }
+
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Email Field -->
+        <div class="form-field">
+          <label class="field-label">Correo</label>
+          <input 
+            type="email" 
+            formControlName="email"
+            placeholder="Correo electrónico"
+            autocomplete="email"
+            class="field-input"
+          />
+          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+            <span class="field-error">{{ getEmailError() }}</span>
+          }
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-field">
+          <label class="field-label">Contraseña</label>
+          <input 
+            [type]="hidePassword() ? 'password' : 'text'" 
+            formControlName="password"
+            placeholder="Contraseña"
+            autocomplete="current-password"
+            class="field-input"
+          />
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <span class="field-error">{{ getPasswordError() }}</span>
+          }
+        </div>
+
+        <!-- Forgot Password Link -->
+        <div class="forgot-password-row">
+          <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="submit-btn"
+          [disabled]="isLoading()"
+        >
+          @if (isLoading()) {
+            <mat-spinner diameter="20" class="spinner"></mat-spinner>
+            <span>Iniciando sesión...</span>
+          } @else {
+            Iniciar sesión
+          }
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="divider-container">
+        <div class="divider-line"></div>
+        <div class="divider-text">O</div>
+      </div>
+
+      <!-- Create Account Button -->
+      <button type="button" class="create-account-btn">
+        Crear cuenta
+      </button>
+
+      <!-- Demo Info -->
+      <!-- <div class="demo-info">
+        <p class="demo-text">
+          <strong>Demo:</strong> usuario&#64;fitness.com / password
+        </p>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Right Side - Image Placeholder -->
+  <div class="image-container">
+    <div class="image-placeholder">
+      <span class="placeholder-text">[Image Placeholder]</span>
+    </div>
+  </div>
+</div>

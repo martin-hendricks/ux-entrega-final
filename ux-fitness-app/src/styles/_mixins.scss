@@ -1,0 +1,300 @@
+// ============================================
+// SCSS Mixins - Reusable Style Utilities
+// ============================================
+
+@import './variables';
+
+// ==================== Flexbox Utilities ====================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// ==================== Typography Mixins ====================
+
+@mixin text-heading-1 {
+  font-family: $font-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-lg;
+  color: $color-text-medium;
+}
+
+@mixin text-heading-2 {
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-lg;
+  color: $color-text-dark;
+}
+
+@mixin text-heading-3 {
+  font-family: $font-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-md;
+  color: $color-text-dark;
+}
+
+@mixin text-body {
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-base;
+  color: $color-text-medium;
+}
+
+@mixin text-caption {
+  font-family: $font-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-xs;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@mixin text-label {
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-base;
+  color: $color-text-medium;
+}
+
+// ==================== Button Mixins ====================
+
+@mixin button-base {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: $spacing-lg $spacing-xl;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: none;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: $color-primary;
+  color: $color-black;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($color-primary, 5%);
+    box-shadow: $shadow-md;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background-color: transparent;
+  color: $color-primary;
+  border: 1px solid $color-black;
+  
+  &:hover:not(:disabled) {
+    background-color: rgba($color-primary, 0.1);
+  }
+}
+
+@mixin button-accent {
+  @include button-base;
+  background-color: $color-accent;
+  color: $color-black;
+  
+  &:hover:not(:disabled) {
+    background-color: darken($color-accent, 5%);
+  }
+}
+
+// ==================== Card Mixins ====================
+
+@mixin card-base {
+  background-color: $color-bg-primary;
+  border: 1px solid $color-border-medium;
+  padding: $spacing-xl;
+  border-radius: $border-radius-md;
+}
+
+@mixin card-elevated {
+  @include card-base;
+  box-shadow: $shadow-md;
+}
+
+// ==================== Form Field Mixins ====================
+
+@mixin form-field {
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid $color-border-dark;
+  border-radius: 0;
+  color: $color-text-medium;
+  background-color: $color-bg-primary;
+  transition: border-color $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+  
+  &::placeholder {
+    color: $color-text-light;
+  }
+}
+
+// ==================== Layout Mixins ====================
+
+@mixin container-full-height {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+@mixin sidebar-base {
+  width: $sidebar-width;
+  height: 100vh;
+  background-color: $color-bg-primary;
+  border-right: 1px solid $color-border-dark;
+  @include flex-column;
+}
+
+// ==================== Responsive Mixins ====================
+
+// @mixin mobile {
+//   @media (max-width: $breakpoint-md) {
+//     @content;
+//   }
+// }
+
+// @mixin tablet {
+//   @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+//     @content;
+//   }
+// }
+
+@mixin desktop {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+// @mixin respond-above($breakpoint) {
+//   @media (min-width: $breakpoint) {
+//     @content;
+//   }
+// }
+
+// @mixin respond-below($breakpoint) {
+//   @media (max-width: calc(#{$breakpoint} - 1px)) {
+//     @content;
+//   }
+// }
+
+// ==================== Utility Mixins ====================
+
+@mixin hover-lift {
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $color-bg-quaternary;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $color-border-medium;
+    border-radius: $border-radius-sm;
+    
+    &:hover {
+      background: $color-border-dark;
+    }
+  }
+}
+
+// ==================== Animation Mixins ====================
+
+@mixin fade-in {
+  animation: fadeIn $transition-base;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin slide-in-left {
+  animation: slideInLeft $transition-base;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,183 @@
+<div class="dashboard-container">
+  <!-- Header -->
+  <div class="dashboard-header">
+    <h1 class="header-title">DASHBOARD</h1>
+    <div class="header-actions">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" placeholder="Search activities..." />
+      </div>
+      <button class="notification-btn">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="dashboard-content">
+    <!-- General Section - Next Session -->
+    <div class="general-section">
+      <div class="section-header">
+        <h2 class="section-title">General</h2>
+        <div class="date-badge">Oct 23, 2025</div>
+      </div>
+
+      <div class="next-session-card">
+        <div class="session-main">
+          <div class="session-left">
+            <div class="session-badge">PRÓXIMA SESIÓN</div>
+            <h3 class="session-location">Parque Simón Bolívar</h3>
+            <p class="session-objective">Objetivo: 5'15" /km</p>
+          </div>
+          <div class="session-time">
+            <div class="time-value">07:00</div>
+            <div class="time-period">AM HOY</div>
+          </div>
+        </div>
+
+        <div class="session-details-row">
+          <div class="detail-item">
+            <mat-icon>place</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">DISTANCIA</span>
+              <span class="detail-value">5.0 km</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <mat-icon>schedule</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">DURACIÓN</span>
+              <span class="detail-value">45 min</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <mat-icon>location_on</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">UBICACIÓN</span>
+              <span class="detail-value">BOGOTÁ, COLOMBIA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="session-actions">
+          <button class="btn-primary">
+            <mat-icon>play_arrow</mat-icon>
+            Empezar sesión
+          </button>
+          <button class="btn-secondary">Editar sesión</button>
+          <button class="btn-menu">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats Section -->
+    <div class="stats-section">
+      <h2 class="section-title">Estadísticas rápidas</h2>
+      <div class="stats-grid">
+        <!-- Weekly Distance -->
+        <div class="stat-card">
+          <div class="stat-header">DISTANCIA SEMANAL</div>
+          <div class="stat-content">
+            <div class="stat-main">
+              <div class="stat-number">24.5</div>
+              <div class="stat-unit">KILÓMETROS</div>
+            </div>
+            <div class="stat-chart">
+              <div class="bar" style="height: 24px"></div>
+              <div class="bar" style="height: 40px"></div>
+              <div class="bar" style="height: 64px"></div>
+              <div class="bar" style="height: 32px"></div>
+              <div class="bar" style="height: 48px"></div>
+            </div>
+          </div>
+          <div class="stat-footer">
+            <span class="stat-change">+12% vs semana pasada</span>
+          </div>
+        </div>
+
+        <!-- Sessions -->
+        <div class="stat-card">
+          <div class="stat-header">SESIONES</div>
+          <div class="stat-content sessions-content">
+            <div class="progress-ring">
+              <svg width="80" height="80">
+                <circle 
+                  cx="40" 
+                  cy="40" 
+                  r="30" 
+                  stroke="#E5E7EB" 
+                  stroke-width="8" 
+                  fill="none" 
+                />
+                <circle 
+                  cx="40" 
+                  cy="40" 
+                  r="30" 
+                  stroke="#00C2FF" 
+                  stroke-width="8" 
+                  fill="none"
+                  stroke-dasharray="188.4"
+                  stroke-dashoffset="37.68"
+                  transform="rotate(-90 40 40)"
+                />
+              </svg>
+              <div class="ring-text">4/5</div>
+            </div>
+            <div class="sessions-info">
+              <div class="stat-number">80%</div>
+              <div class="stat-label">Objetivo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Average Pace -->
+        <div class="stat-card">
+          <div class="stat-header">PROMEDIO</div>
+          <div class="stat-content">
+            <div class="stat-inline">
+              <span class="stat-number">5'32"</span>
+              <span class="stat-unit">/km</span>
+            </div>
+          </div>
+          <div class="stat-footer">
+            <mat-icon>trending_up</mat-icon>
+            <span>Constancia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity Section -->
+    <div class="activity-section">
+      <div class="section-header">
+        <h2 class="section-title">Actividad reciente</h2>        <a href="#" class="view-all-link">VER TODA LA ACTIVIDAD</a>
+      </div>
+
+      <div class="activity-table">
+        <div class="table-header">
+          <div class="th">ACTIVIDAD</div>
+          <div class="th">DISTANCIA</div>
+          <div class="th">DURACIÓN</div>
+          <div class="th th-right">FECHA</div>
+        </div>
+        <div class="table-body">
+          <div class="table-row">
+            <div class="td">
+              <div class="activity-type">
+                <div class="activity-icon">
+                  <mat-icon>directions_run</mat-icon>
+                </div>
+                <span>Running</span>
+              </div>
+            </div>
+            <div class="td">4.2 km</div>
+            <div class="td">28:12</div>
+            <div class="td td-right">Oct 22, 6:45 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

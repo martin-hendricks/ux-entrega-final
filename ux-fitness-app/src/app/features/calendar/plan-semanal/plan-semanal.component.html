@@ -1,0 +1,134 @@
+<div class="plan-semanal-container">
+  <!-- Header -->
+  <div class="plan-header">
+    <div class="header-content">
+      <div class="header-left">
+        <h1 class="page-title">Plan semanal</h1>
+        <button 
+          mat-icon-button 
+          (click)="previousWeek()"
+          aria-label="Semana anterior"
+          class="nav-btn"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span class="week-range">{{ getWeekRange() }}</span>
+        <button 
+          mat-icon-button 
+          (click)="nextWeek()"
+          aria-label="Semana siguiente"
+          class="nav-btn"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        <button 
+          mat-button 
+          (click)="goToToday()"
+          class="today-btn"
+        >
+          Hoy
+        </button>
+      </div>
+      <div class="header-right">
+        <button 
+          mat-raised-button 
+          class="create-btn"
+          (click)="openCreateEventDialog()"
+        >
+          Crear sesión
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Week View Content -->
+  <div class="week-view">
+    @if (isLoading()) {
+      <div class="loading-state">
+        <p>Cargando plan semanal...</p>
+      </div>
+    } @else if (weekView()) {
+      <div class="calendar-grid">
+        <!-- Header Row -->
+        <div class="calendar-header">
+          <!-- Empty corner cell for time column -->
+          <div class="header-cell time-header"></div>
+          
+          <!-- Day headers -->
+          @for (day of weekView()?.days; track day.date) {
+            <div 
+              class="header-cell day-header"
+              [class.today]="isToday(day.date)"
+            >
+              <span class="day-name">{{ getDayName(day.date) }}</span>
+              <span class="day-number">{{ getDayNumber(day.date) }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Calendar Body with Time Slots -->
+        <div class="calendar-body">
+          @for (timeSlot of timeSlots; track timeSlot) {
+            <!-- Time Column -->
+            <div class="time-cell">
+              <span class="time-label">{{ timeSlot }}</span>
+            </div>
+            
+            <!-- Day Cells -->
+            @for (day of weekView()?.days; track day.date) {
+              <div 
+                class="day-cell"
+                [class.today-cell]="isToday(day.date)"
+              >
+                <!-- Events for this time slot -->
+                @for (event of day.events; track event.id) {
+                  @if (formatTime(event.time) === timeSlot) {
+                    <div 
+                      class="event-card"
+                      [style.border-left-color]="event.color"
+                      (click)="onEventClick(event)"
+                    >
+                      <div class="event-content">
+                        <mat-icon class="event-icon">{{ getEventTypeIcon(event.type) }}</mat-icon>
+                        <span class="event-title">{{ event.title }}</span>
+                      </div>
+                      <span class="event-duration">{{ formatDuration(event.duration) }}</span>
+                    </div>
+                  }
+                }
+              </div>
+            }
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="error-state">
+        <mat-icon>error_outline</mat-icon>
+        <p>No se pudo cargar el plan semanal</p>
+        <button 
+          mat-raised-button 
+          color="primary"
+          (click)="loadWeekView()"
+        >
+          Reintentar
+        </button>
+      </div>
+    }
+  </div>
+
+  <!-- Summary Stats Footer -->
+  <div class="stats-footer">
+    <div class="stat-card">
+      <span class="stat-label">DISTANCIA TOTAL</span>
+      <span class="stat-value">{{ getTotalDistance() }} km</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">SESIONES</span>
+      <span class="stat-value">{{ getTotalEventsCount() }} Planeadas</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">DURACIÓN PROMEDIO</span>
+      <span class="stat-value">{{ getAverageDuration() }} min</span>
+    </div>
+  </div>
+</div>
