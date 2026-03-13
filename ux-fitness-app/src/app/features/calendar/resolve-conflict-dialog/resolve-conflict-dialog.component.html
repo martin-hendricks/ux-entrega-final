@@ -1,0 +1,59 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 class="dialog-title">RESOLVER CONFLICTOS</h2>
+    <button class="close-btn" (click)="onClose()">X</button>
+  </div>
+
+  <div class="dialog-content">
+    <!-- Espacios Sugeridos -->
+    <div class="section">
+      <h3 class="section-title">ESPACIOS SUGERIDOS</h3>
+      <div class="suggestions">
+        <button 
+          *ngFor="let slot of suggestedSlots"
+          class="suggestion-btn"
+          [class.selected]="selectedSlot === slot.id"
+          (click)="selectSlot(slot.id)">
+          <span class="suggestion-label">{{ slot.label }}</span>
+          <span class="suggestion-time">{{ slot.day }}, {{ slot.time }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Ajuste Manual -->
+    <div class="section">
+      <h3 class="section-title">AJUSTE MANUAL</h3>
+      <form [formGroup]="manualForm" class="manual-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="field-label">NUEVA FECHA</label>
+            <input 
+              type="date" 
+              formControlName="newDate"
+              class="field-input"
+              (focus)="selectedSlot = null">
+          </div>
+          <div class="form-field">
+            <label class="field-label">NUEVA HORA</label>
+            <input 
+              type="time" 
+              formControlName="newTime"
+              class="field-input"
+              (focus)="selectedSlot = null">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="dialog-actions">
+    <button class="cancel-btn" (click)="onCancel()">CANCELAR</button>
+    <button 
+      class="save-btn" 
+      (click)="onSave()"
+      [disabled]="!selectedSlot && !manualForm.valid">
+      GUARDAR
+    </button>
+  </div>
+</div>

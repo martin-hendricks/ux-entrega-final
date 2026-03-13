@@ -1,0 +1,64 @@
+.dialog-content {
+  max-width: 280px;
+  padding: 24px 25px 25px;
+  background: rgba(255, 176, 32, 0.15);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.conflict-message {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 19.25px;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.move-btn,
+.maintain-btn,
+.cancel-btn {
+  width: 100%;
+  padding: 13px 1px;
+  border: 1px solid #d0d0d0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  border-radius: 0;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.move-btn {
+  background-color: #00c2ff;
+  color: white;
+  border-color: #d0d0d0;
+}
+
+.maintain-btn {
+  background-color: #6b6b6b;
+  color: white;
+  border-color: #d0d0d0;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: black;
+  border-color: #d0d0d0;
+}

@@ -1,0 +1,59 @@
+<div class="sidebar-container">
+  <!-- Header: Logo y título -->
+  <div class="header-section">
+    <div class="logo-wrapper">
+      <mat-icon class="logo-icon">fitness_center</mat-icon>
+      <h1 class="app-title">Fitness App</h1>
+    </div>
+  </div>
+
+  <!-- Navigation: Links principales -->
+  <div class="navigation-section">
+    <nav class="nav-menu">
+      @for (item of navItems; track item.route) {
+        <a 
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="menu-item"
+        >
+          <mat-icon class="menu-icon">{{ item.icon }}</mat-icon>
+          <span class="menu-text">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+  </div>
+
+  <!-- Bottom Section: Profile y Logout -->
+  <div class="bottom-section">
+    <!-- User Profile -->
+    @if (currentUser()) {
+      <div class="profile-area">
+        <button 
+         mat-stroked-button 
+        class="logout-button"
+        (click)="logout()">
+        <div class="profile-avatar">
+          <mat-icon class="avatar-icon">person</mat-icon>
+        </div>
+        </button>
+        <div class="profile-details">
+          <div class="profile-name">{{ currentUser()?.name }}</div>
+          <div class="profile-subtitle">Pro Runner</div>
+        </div>
+      </div>
+    }
+
+    <!-- Logout Button -->
+    <!-- <div class="logout-area">
+      <button 
+        mat-stroked-button 
+        class="logout-button"
+        (click)="logout()"
+      >
+        <mat-icon class="logout-icon">exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </div> -->
+  </div>
+</div>

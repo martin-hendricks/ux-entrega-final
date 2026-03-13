@@ -1,0 +1,24 @@
+@import '../../../../styles/variables';
+
+.main-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidenav {
+  width: $sidebar-width;
+  border-right: 1px solid $color-border-light;
+  background-color: $background-dark;
+  overflow: hidden; // No scroll aquí, el sidebar interno lo maneja
+  height: 100%;
+}
+
+.main-content {
+  height: 100%;
+  overflow-y: auto;
+  background-color: $background-light;
+  
+  // Smooth scrolling
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,67 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 class="dialog-title">CREAR SESIÓN</h2>
+    <button class="close-btn" (click)="onCancel()">
+      X
+    </button>
+  </div>
+
+  <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()" class="dialog-content">
+    <!-- Session Type -->
+    <div class="form-field">
+      <label class="field-label">SESSION TYPE</label>
+      <mat-form-field appearance="outline" class="custom-field">
+        <mat-select formControlName="type">
+          @for (type of sessionTypes; track type.value) {
+            <mat-option [value]="type.value">{{ type.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Start Time -->
+    <div class="form-field">
+      <label class="field-label">START TIME</label>
+      <mat-form-field appearance="outline" class="custom-field">
+        <input matInput formControlName="time" placeholder="07:00" />
+        @if (sessionForm.get('time')?.hasError('pattern') && sessionForm.get('time')?.touched) {
+          <mat-error>Formato inválido (HH:MM)</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Duration and Distance Row -->
+    <div class="form-row">
+      <div class="form-field">
+        <label class="field-label">DURATION</label>
+        <mat-form-field appearance="outline" class="custom-field">
+          <input matInput type="number" formControlName="duration" placeholder="120 min" />
+          @if (sessionForm.get('duration')?.hasError('min') && sessionForm.get('duration')?.touched) {
+            <mat-error>Debe ser mayor a 0</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">DISTANCE</label>
+        <mat-form-field appearance="outline" class="custom-field">
+          <input matInput type="number" formControlName="distance" placeholder="5 km" step="0.1" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="dialog-actions">
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="sessionForm.invalid || isSubmitting()"
+      >
+        {{ isSubmitting() ? 'GUARDANDO...' : 'GUARDAR SESIÓN' }}
+      </button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">
+        CANCELAR
+      </button>
+    </div>
+  </form>
+</div>
