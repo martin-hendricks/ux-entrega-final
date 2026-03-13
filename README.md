@@ -22,7 +22,7 @@ npm --version
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd ux-web-entrega-final
+cd ux-entrega-final
 ```
 
 ### 2. Navegar a la carpeta del proyecto Angular
